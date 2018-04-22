@@ -69,6 +69,7 @@
                 });
             });
         });
+
     </script>
 
     <script>
@@ -103,25 +104,29 @@
             var date7 = $.trim(date7);
             var date8 = $("#date8").val();
             var date8 = $.trim(date8);
-
-            $.get('datasorce.php',{
-                name:name,
-                science_class:science_class,
-                date1:date1,
-                date2:date2,
-                teach_class:teach_class,
-                date3:date3,
-                date4:date4,
-                other_class:other_class,
-                date5:date5,
-                date6:date6,
-                famous_class:famous_class,
-                date7:date7,
-                date8:date8,
-                page:1
-            },function(data) {
-                $("#accort").html(data);
-             })       
+            if(name){
+                $.get('datasorce.php',{
+                    name:name,
+                    science_class:science_class,
+                    date1:date1,
+                    date2:date2,
+                    teach_class:teach_class,
+                    date3:date3,
+                    date4:date4,
+                    other_class:other_class,
+                    date5:date5,
+                    date6:date6,
+                    famous_class:famous_class,
+                    date7:date7,
+                    date8:date8,
+                    page:1
+                },function(data) {
+                    $("#accort").html(data);
+                })   
+            }
+            else{
+                alert("教师姓名不可为空");
+            } 
 
         }
         previouspage = function(){   //返回上一页
@@ -224,7 +229,7 @@
      ?>
 
      <div class="page" width="100%">
-    <form id="iterInfo" name="iterInfo" method="post" action="datasorce.php" class="form-inline" role="form">
+    <form id="iterInfo" name="iterInfo" method="post" action="datasorce.php" class="form-inline" role="form" enctype="multipart/form-data">
         <div class="panel panel-primary" width="100%">
             <div class="panel-heading">
                 <h3 class="panel-title">
@@ -238,7 +243,8 @@
                 科研获奖类别：
                 <select style='width:10%;height:25%;' class='form-control' name='science_class'
                         type='text' id='science_class'>
-                    <option value='国家级'>国家级</option>
+                    <option value='empty'></option>
+                    <option value='国家级' selected="selected">国家级</option>
                     <option value='省级'>省级</option>
                     <option value='校级'>校级</option>
                 </select>
@@ -246,11 +252,7 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;科研获奖时间：
                 <input id='date1' class="form-control" name='date1' type="date" width="50px"/>
                 &nbsp;&nbsp;
-                <select style='width:6%;height:25%;' class='form-control' name='arrive1' type='text' id='arrive1'>
-                    <option value='之间'>之前</option>
-                    <option value='之后'>之后</option>
-                    <option value='至'>至</option>
-                </select>
+                <label>至</label>
                 &nbsp;&nbsp;
                 <input id='date2' class="form-control" name='date2' type="date" width="50px"/>
                  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
@@ -258,52 +260,43 @@
                 <br><br>
                 教学获奖类别：
                 <select style='width:10%;height:25%;' class='form-control' name='teach_class' type='text' id='teach_class'>
-                    <option value='国家级'>国家级</option>
+                    <option value='empty'></option>
+                    <option value='国家级' selected="selected">国家级</option>
                     <option value='省级'>省级</option>
                     <option value='校级'>校级</option>
                 </select>
                 &nbsp;&nbsp;&nbsp;&nbsp;教学获奖时间：
                 <input id='date3' class="form-control" name='date3' type="date" width="50px"/>
                 &nbsp;&nbsp;
-                <select style='width:6%;height:25%;' class='form-control' name='arrive2' type='text' id='arrive2'>
-                    <option value='之间'>之前</option>
-                    <option value='之后'>之后</option>
-                    <option value='至'>至</option>
-                </select>
+                <label>至</label>
                 &nbsp;&nbsp;
                 <input id='date4' class="form-control" name='date4' type="date" width="50px"/>
                 <br><br>
                 其他获奖类别：
                 <select style='width:10%;height:25%;' class='form-control' name='other_class' type='text' id='other_class'>
-                    <option value='国家级'>国家级</option>
+                    <option value='empty'></option>
+                    <option value='国家级' selected="selected">国家级</option>
                     <option value='省级'>省级</option>
                     <option value='校级'>校级</option>
                 </select>
                 &nbsp;&nbsp;&nbsp;&nbsp;其他获奖时间：
                 <input id='date5' class="form-control" name='date5' type="date" width="50px"/>
                 &nbsp;&nbsp;
-                <select style='width:6%;height:25%;' class='form-control' name='arrive3' type='text' id='arrive3'>
-                    <option value='之间'>之前</option>
-                    <option value='之后'>之后</option>
-                    <option value='至'>至</option>
-                </select>
+                <label>至</label>
                 &nbsp;&nbsp;
                 <input id='date6' class="form-control" name='date6' type="date" width="50px"/>
                 <br><br>
                 显著业绩类别：
                 <select style='width:10%;height:25%;' class='form-control' name='famous_class' type='text' id='famous_class'>
-                    <option value='国家级'>国家级</option>
+                    <option value='empty'></option>
+                    <option value='国家级' selected="selected">国家级</option>
                     <option value='省级'>省级</option>
                     <option value='校级'>校级</option>
                 </select>
                 &nbsp;&nbsp;&nbsp;&nbsp;显著业绩时间：
                 <input id='date7' class="form-control" name='date7' type="date" width="50px"/>
                 &nbsp;&nbsp;
-                <select style='width:6%;height:25%;' class='form-control' name='arrive4' type='text' id='arrive4'>
-                    <option value='之间'>之前</option>
-                    <option value='之后'>之后</option>
-                    <option value='至'>至</option>
-                </select>
+                <label>至</label>
                 &nbsp;&nbsp;
                 <input id='date8' class="form-control" name='date8' type="date" width="50px"/>
                 <br><br>

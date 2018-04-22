@@ -67,6 +67,7 @@
             </select>
 
             <button id="queryrecord" type="button">记录查询</button>
+            <button id="uploading" type="button">上传获奖附件</button>
         </div>
     </table>
 </div>
@@ -84,6 +85,11 @@
         var queryrecord = $("#queryrecord").val();
         var queryrecord= $.trim(queryrecord); 
         window.location.href = 'searchRecord.php';
+    });
+    $("#uploading").click(function(){ 
+        var uploading = $("#uploading").val();
+        var uploading = $.trim(uploading);
+        window.location.href = 'upload.php';
     });
 
     function isEndEdit(){    //判断是否结束编辑

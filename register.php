@@ -17,18 +17,18 @@
     <br><br><br>
     <div class="page" width="100%">
         <form id="iterInfo" name="iterInfo" method="post" action="register.php" class="form-inline" role="form">
-            <div class="panel-default" width="100%">
+            <div class="panel panel-primary" width="100%">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         请使用学号或工号注册（本系统已经做了加密处理，不会泄露个人信息）
                     </h3>
                 </div>
                 <div class="panel-body">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="text"  id='username' class="form-control" name="username" placeholder="请输入学号或者工号"/><br /><br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="password" id='password' class="form-control" name="password" placeholder="请输入密码"/><br /><br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码确认：&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码确认：
                     <input type="password" id='password2' class="form-control" name="password2"  placeholder="请确认密码"/><br /><br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="submit" id='reg' width="80px" height="100px" value="注册" class='btn btn-info' name="reg">

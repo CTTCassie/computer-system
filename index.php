@@ -17,7 +17,7 @@
     <br><br><br>
     <div class="page" width="100%">
         <form id="iterInfo" name="iterInfo" method="post" action="index.php" class="form-inline" role="form">
-            <div class="panel-default" width="100%">
+            <div class="panel panel-primary" width="100%">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         用户登录/LOGIN

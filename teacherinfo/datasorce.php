@@ -38,7 +38,32 @@
                         <th style='width:5%;table-layout:fixed'>显著业绩获得时间</th>
                     </tr>";
 
-                $sql_query = "SELECT * FROM `teacherinfo` WHERE `name`='{$name}' and `science_class`='{$science_class}' and `science_time`";
+                $sql_query = "SELECT * FROM `teacherinfo` WHERE `name`='{$name}'";
+
+                if($science_class != 'empty'){
+                    $sql_query = "SELECT * FROM `teacherinfo` WHERE `name`='{$name}' and `science_class`='{$science_class}' ";
+                    if($date1 && $date2){
+                        $sql_query = "SELECT * FROM `teacherinfo` WHERE `name`='{$name}' and `science_class`='{$science_class}' and (`science_time` between '{$date1}' and '{$date2}') ";
+                    }
+                }
+                else if($teach_class != 'empty'){
+                    $sql_query = "SELECT * FROM `teacherinfo` WHERE `name`='{$name}' and `teach_class`='{$teach_class}' ";
+                    if($date3 && $date4){
+                        $sql_query = "SELECT * FROM `teacherinfo` WHERE `name`='{$name}' and `teach_class`='{$teach_class}' and (`teach_time` between '{$date3}' and '{$date4}')";
+                    }
+                }
+                else if($other_class != 'empty'){
+                    $sql_query = "SELECT * FROM `teacherinfo` WHERE `name`='{$name}' and `other_class`='{$other_class}' ";
+                    if($date5 && $date6){
+                        $sql_query = "SELECT * FROM `teacherinfo` WHERE `name`='{$name}' and `other_class`='{$other_class}' and (`other_time` between '{$date5}' and '{$date6}')";
+                    }
+                }
+                else if($famous_class != 'empty'){
+                    $sql_query = "SELECT * FROM `teacherinfo` WHERE `name`='{$name}' and `famous_class`='{$famous_class}' ";
+                    if($date7 && $date8){
+                        $sql_query = "SELECT * FROM `teacherinfo` WHERE `name`='{$name}' and `famous_class`='{$famous_class}' and (`famous_time` between '{$date7}' and '{$date8}')";
+                    }
+                }
 
                 foreach ($pdo->query($sql_query) as $row){
                     echo "<tr height='50px'>"; 
@@ -66,4 +91,3 @@
             echo "<br><br><br><br><br><br><br>";
               
     ?>  
-

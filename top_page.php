@@ -9,7 +9,7 @@
 
     </head>  
     <body>  
-        <br><br><br>
+        <br>
         <?php
         session_start();
         include_once "/common/strap.php";
