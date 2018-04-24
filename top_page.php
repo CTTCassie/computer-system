@@ -74,24 +74,21 @@
                     <div class="panel-heading">  
                         <a href="#collapseD"  data-toggle="collapse" class="panel-title">账号管理</a>  
                     </div>  
-
                     <div class="panel-body">  
                         <ul class="nav nav-pills nav-stacked">  
-                            <li><a href="logout.php" >注销</a></li> 
-                            <li><a href="logout.php" >切换账号</a></li> 
+                            <li><a href="/logout.php" target ="#">注销</a></li> 
+                            <li><a href="/logout.php" target ="#">切换账号</a></li> 
                         </ul>  
                     </div>  
 
-                </div>  
+                </div> 
 
             </div>  
-
             <div class="col-sm-2" width="50%">
-                <br><br><br>
-                <div style="color:#F00" aligin="center">
-                    <label>当前操作者：<?php echo $username;?></label>
-                </div>
+                <iframe  src="showuserinfo.php" name="frame2" frameborder="0" width="1585" height="1400" marginheight="0" marginwidth="0" scrolling="no">
+                </iframe>   
             </div>
+
         </div>
         <script type="text/javascript" src="/assets/jquery.min.js"></script>  
         <script type="text/javascript" src="/assets/bootstrap.min.js"></script>  

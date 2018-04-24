@@ -29,9 +29,9 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：
                     <input type="password" id='password' class="form-control" name="password" placeholder="请输入密码"/><br /><br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label><input name="kinds" type="radio" value="学生" />学生</label> 
-                    <label><input name="kinds" type="radio" value="教师" checked="true"/>教师</label> 
-                    <label><input name="kinds" type="radio" value="管理员" />管理员</label> <br /><br />
+                    <label><input name="individual" type="radio" value="学生" />学生</label> 
+                    <label><input name="individual" type="radio" value="教师" checked="true"/>教师</label> 
+                    <label><input name="individual" type="radio" value="管理员" />管理员</label> <br /><br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="submit" id='log' width="80px" height="100px" value="登录" class='btn btn-info' name="log">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -51,6 +51,7 @@
     {
         $name=$_POST["username"];
         $password=$_POST["password"];
+        $individual = $_POST["individual"];
         if($name=="" || $password=="")//判断是否为空
         {
           echo"<script type="."\""."text/javascript"."\"".">"."window.alert"."("."\""."请输入用户名和密码！"."\"".")".";"."</script>";
@@ -71,14 +72,16 @@
           {
             $_SESSION["username"]=$name;
             echo"<script type="."\""."text/javascript"."\"".">"."window.alert"."("."\""."欢迎您  ".$name."   ！"."\"".")".";"."</script>";
-            /*$kinds = $_POST["kinds"];
-            if($kinds == "教师"){
+            if($individual == "教师"){
+              echo"<script type="."\""."text/javascript"."\"".">"."window.location="."\""."/teacherinfo/prizeinfo.php"."\""."</script>";
+            }
+            else if($individual == "学生"){
               echo"<script type="."\""."text/javascript"."\"".">"."window.location="."\""."/studentinfo/graduate/graduateprize.php"."\""."</script>";
             }
-            else{
-              echo"<script type="."\""."text/javascript"."\"".">"."window.location="."\""."/teacherinfo/prizeinfo.php"."\""."</script>";
-            }*/
-            echo"<script type="."\""."text/javascript"."\"".">"."window.location="."\""."/top_page.php"."\""."</script>";
+            else{    //管理员
+              echo"<script type="."\""."text/javascript"."\"".">"."window.location="."\""."/top_page.php"."\""."</script>";
+            }
+            //echo"<script type="."\""."text/javascript"."\"".">"."window.location="."\""."/top_page.php"."\""."</script>";
           }
           else
           {  
