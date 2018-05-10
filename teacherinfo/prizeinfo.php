@@ -55,19 +55,24 @@
 <div data-options="region:'south',split:true" style="height:50px;"></div>
 <div data-options="region:'east',split:true" style="width:50px;"></div>
 <div data-options="region:'west',split:true" style="width:50px;"></div>
-
 <div data-options="region:'center',title:'计算机学院信息化管理系统-教师获奖信息'" style="padding:5px;height:90%;background:#eee;">
     <table id="dd" class="easyui-datagrid" toolbar="#tb" style="width:100%;height:100%;font-size:50px">
         <div>
+
             <select id="customCombobox" style="width:5;height:5;font-size:10px">
                 <option value="各种获奖管理">各种获奖管理</option>
                 <option value="国家级">国家级</option>
                 <option value="省级">省级</option>
                 <option value="校级">校级</option>
             </select>
-
-            <button id="queryrecord" type="button">记录查询</button>
-            <button id="uploading" type="button">上传获奖附件</button>
+            <?php
+                echo "&nbsp;&nbsp;";
+                $queryrecord = "window.location.href='searchRecord.php'";
+                $uploading = "window.location.href='upload.php'";
+                echo "<input type='button' onclick=$queryrecord value='记录查询' />";
+                echo "&nbsp;&nbsp;";
+                echo "<input type='button' onclick=$uploading value='上传获奖附件' />";
+            ?>
         </div>
     </table>
 </div>
@@ -80,17 +85,6 @@
 <script type="text/javascript" charset="utf-8">
     var datagrid; //定义全局变量datagrid
     var editRow = undefined; //定义全局变量：当前编辑的行
-
-    $("#queryrecord").click(function(){
-        var queryrecord = $("#queryrecord").val();
-        var queryrecord= $.trim(queryrecord); 
-        window.location.href = 'searchRecord.php';
-    });
-    $("#uploading").click(function(){ 
-        var uploading = $("#uploading").val();
-        var uploading = $.trim(uploading);
-        window.location.href = 'upload.php';
-    });
 
     function isEndEdit(){    //判断是否结束编辑
         if(editRow == undefined){

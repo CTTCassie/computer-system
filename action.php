@@ -4,13 +4,13 @@
 
  if (!empty($_POST["action"])){
  	switch ($_POST["action"]){
- 		case 'edit':{
- 			$uid = $_POST['uid'];
- 			$username = $_POST['username'];
- 			$password = $_POST['password'];
- 			$pass = base64_encode($password);
- 			$sql_update = "UPDATE `userinfo` SET `username`='{$username}',`password`='{$pass}' WHERE uid='{$uid}'";
- 			$rw = $pdo->exec($sql_update);
+        case 'edit':{
+            $uid = $_POST['uid'];
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $pass = base64_encode($password);
+            $sql_update = "UPDATE `userinfo` SET `username`='{$username}',`password`='{$pass}' WHERE uid='{$uid}'";
+            $rw = $pdo->exec($sql_update);
             if($rw > 0){
                 echo "<script>alert('修改成功');
                      window.location='/showuserinfo.php'
@@ -21,8 +21,8 @@
                       window.location='/showuserinfo.php'
                 </script>";
             }
- 			break;
- 		}
+            break;
+        }
  	}
  }
 

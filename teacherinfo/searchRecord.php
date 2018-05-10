@@ -188,6 +188,9 @@
         echo "</div>";
 
         echo '<div class="page" align="right"  style="font-size:14px">'; 
+
+        $countpages = "共 " . $count . " 条记录；" . "共 " . $pages . " 页";
+        echo $countpages,"&nbsp;&nbsp;&nbsp;&nbsp;";
    
             echo "<span id='pagenumber'>$page/$pages</span> "; 
                 if($page!=1){ 
@@ -300,14 +303,15 @@
                 &nbsp;&nbsp;
                 <input id='date8' class="form-control" name='date8' type="date" width="50px"/>
                 <br><br>
-
-                <input type='button' class='btn btn-default' onclick='searchData()' value='查询数据'/>&nbsp; &nbsp;&nbsp; &nbsp;
+                <input type='button' class='btn btn-default' onclick='searchData()' value='未归档查询'/>&nbsp; &nbsp;&nbsp; &nbsp;
+                <input type='button' class='btn btn-default' onclick='searchData()' value='归档查询'/>&nbsp; &nbsp;&nbsp; &nbsp;
                 <input type='button' class='btn btn-default' id='download' value='数据导出'/>&nbsp; &nbsp;&nbsp; &nbsp;
                 <input type='button' class='btn btn-default' onclick='previouspage()' value='返回'/>&nbsp; &nbsp;&nbsp; &nbsp;
 
             </div>
         </div>
     </form>
+    <br><br><br><br>
 </div>
 
 </table>

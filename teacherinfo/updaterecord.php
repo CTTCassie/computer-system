@@ -85,45 +85,6 @@ if (isset($_POST['flag'])) {
             $sql = "UPDATE `teacherinfo` SET `name`='{$_POST['name']}',`year`='{$_POST['year']}',`science_name`='{$_POST['science_name']}',`science_class`='{$_POST['science_class']}',`science_time`='{$_POST['science_time']}',`teach_name`='{$_POST['teach_name']}',`teach_class`='{$_POST['teach_class']}',`teach_time`='{$_POST['teach_time']}',`teach_rank`='{$_POST['teach_rank']}',`other_name`='{$_POST['other_name']}', `other_class`='{$_POST['other_class']}',`other_time`='{$_POST['other_time']}',`other_rank`='{$_POST['other_rank']}',`famous_name`='{$_POST['famous_name']}',`famous_class`='{$_POST['famous_class']}',`famous_time`='{$_POST['famous_time']}' WHERE `time`='{$_POST['time']}'";
         }
         $st = $pdo->exec($sql);
-
-        //统计表中的最新数据，对其求和
-        /*$example_num = 0;
-        $run_time = 0;
-        $analysis_time = 0;
-        $question_num = 0;
-        $teamnum = 0;     //统计满足条件的团队个数
-        $sql_query = "SELECT `team`, `run_need`, `bug_num`, `example_num`, `environment`, `run_time`, `develop`, `analysis_time`, `question_num` FROM `datarecord` WHERE `time` = '{$_POST['time']}' ";
-
-        $st_query = $pdo->query($sql_query);
-
-        while( $row_query = $st_query->fetch() )
-        {
-            $example_num += $row_query['example_num'];
-            $run_time += $row_query['run_time'];
-            $analysis_time += $row_query['analysis_time'];
-            $question_num += $row_query['question_num'];
-            $teamnum++;
-        }*/
-
-        /*echo "example_num is " + $example_num;
-        echo "run_time is " + $run_time;
-        echo "analysis_time is " + $analysis_time;
-        echo "question_num is " + $question_num;
-        echo "teamnum is " + $teamnum;*/
-        //将对应的数据插入到求和数据表中
-        /*$sql_add = "SELECT * FROM `add` WHERE `time`='{$_POST['time']}'";
-
-        $st = $pdo->query($sql_add);
-
-        if($st->rowCount() == 0)
-        {
-            $sql_inser = "INSERT INTO `add`(`time`,`example_num`,`run_time`,`analysis_time`,`question_num`,`teamnum`) VALUES ('{$_POST['time']}', '{$example_num}', '{$run_time}', '{$analysis_time}', '{$question_num}', {$teamnum})";
-        }
-        else
-        {
-            $sql_inser = "UPDATE `add` SET `example_num`='{$example_num}', `run_time`='{$run_time}', `analysis_time`='{$analysis_time}', `question_num`='{$question_num}', `teamnum`={$teamnum} WHERE `time`='{$_POST['time']}'";
-        }
-        $pdo->exec($sql_inser);*/
         echo $st->rowCount();
 
     }
@@ -133,53 +94,14 @@ if (isset($_POST['flag'])) {
 }
 if(isset($_POST['del'])){
     try{
-        //$sql = "DELETE FROM `datarecord` WHERE `team`='{$_POST['team']}' and `time`='{$_POST['time']}' limit 1";
         //要删除的字段必须和用户输入完全一致
         $sql = "DELETE FROM `teacherinfo` WHERE `time`='{$_POST['time']}' ";
         $st = $pdo->exec($sql);
-
-        /*$example_num = 0;
-        $run_time = 0;
-        $analysis_time = 0;
-        $question_num = 0;
-        $teamnum = 0;     //统计满足条件的团队个数
-        $sql_query = "SELECT `team`, `run_need`, `bug_num`, `example_num`, `environment`, `run_time`, `develop`, `analysis_time`, `question_num` FROM `datarecord` WHERE `time`='{$_POST['time']}'";
-        $st_query = $pdo->query($sql_query);
-
-        while($row_query = $st_query->fetch()){
-            $example_num += $row_query['example_num'];
-            $run_time += $row_query['run_time'];
-            $analysis_time += $row_query['analysis_time'];
-            $question_num += $row_query['question_num'];
-            $teamnum++;
-        }
-
-        $sql_inser = "UPDATE `add` SET `example_num`='{$example_num}', `run_time`='{$run_time}', `analysis_time`='{analysis_time}', `question_num`='{$question_num}' WHERE `time`='{$_POST['time']}'";
-
-        $pdo->exec($sql_inser);*/
         echo true;
     }
     catch(PDOException $ex){
         echo $ex;
     }
 }
-
-/*if (isset($_POST['chart'])) {
-    $data = array();
-    $sql = "SELECT * FROM `average` WHERE  `time` BETWEEN '{$_POST['time1']}' and '{$_POST['time2']}' ";
-    $st = $pdo->query($sql);
-    while ($row = $st->fetch()) {
-        if($row['teamnum']!=0){
-            $data['time'][] = $row['time'];
-            $data['number'][] = $row['number'] / $row['teamnum'];
-            $data['analytime'][] = bcdiv($row['analytime'], $row['teamnum'], 3);
-            $data['quenumber'][] = bcdiv($row['quenumber'], $row['teamnum'], 1);
-            $data['runtime'][] = bcdiv($row['runtime'], $row['teamnum'], 3);
-
-        }
-      
-    }
-    echo json_encode($data, JSON_UNESCAPED_UNICODE);
-}*/
 
 ?>

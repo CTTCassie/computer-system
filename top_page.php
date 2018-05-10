@@ -52,8 +52,8 @@
 
                     <div class="panel-body">  
                         <ul class="nav nav-pills nav-stacked">  
-                            <li><a href='/studentinfo/graduate/graduateprize.php' target ="#">研究生获奖信息</a></li>
-                            <li><a href="/studentinfo/undergraduate/undergraduateprize.php" target ="#">本科获奖信息</a></li>   
+                            <li><a href='/studentinfo/postgraduate/postgraduateprize.php' target ="#">研究生获奖信息</a></li>
+                            <li><a href="/studentinfo/graduate/graduateprize.php" target ="#">本科获奖信息</a></li>   
                         </ul>  
                     </div>  
 

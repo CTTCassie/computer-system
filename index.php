@@ -25,7 +25,7 @@
                 </div>
                 <div class="panel-body">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账号：
-                    <input type="text"  id='username' class="form-control" name="username" placeholder="请输入学号或者工号:"/><br /><br />
+                    <input type="text"  id='username' class="form-control" name="username" placeholder="请输入学号或者工号"/><br /><br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：
                     <input type="password" id='password' class="form-control" name="password" placeholder="请输入密码"/><br /><br />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

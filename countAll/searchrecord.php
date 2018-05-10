@@ -41,7 +41,7 @@
     ?>
     <meta charset="UTF-8">
 
-    <title>各种获奖信息管理</title>
+    <title>获奖信息查询</title>
 
     <link rel="stylesheet" href="../assets/jquery-ui.min.css">
     <script src="../assets/jquery.min.js"></script>
@@ -74,19 +74,33 @@
     </script>
 
     <script>
-        workloadCount = function(){
-
-        }
-
         searchData = function(){     //查询数据
+            var name = $("#name").val(); 
+            var name = $.trim(name);
             var year = $("#year").val(); 
             var year = $.trim(year);
-            $.get('datasorce.php',{
-                year: year,
-                page: 1
-            },function(data) {
-                $("#accort").html(data);
-            })   
+            var award_points1 = $("#award_points1").val();
+            var award_points1 = $.trim(award_points1);
+            var op = $("#op").val();
+            var op = $.trim(op);
+            var award_points2 = $("#award_points2").val();
+            var award_points2 = $.trim(award_points2);
+
+            if(name){
+                $.get('datasorce.php',{
+                    name: name,
+                    year: year,
+                    award_points1: award_points1,
+                    op: op,
+                    award_points2: award_points2,
+                    page: 1
+                },function(data) {
+                    $("#accort").html(data);
+                })   
+            }
+            else{
+                alert("姓名不可为空");
+            } 
 
         }
         
@@ -115,23 +129,17 @@
             echo "<tr height='40px' bgcolor='#F0FFFF'>
                   <th style='width:5%;table-layout:fixed'>姓名</th>
                   <th style='width:5%;table-layout:fixed'>年度</th>
-                  <th style='width:10%;table-layout:fixed'>获奖名称</th>
-                  <th style='width:10%;table-layout:fixed'>获奖积分</th>
-                  <th style='width:5%;table-layout:fixed'>操作</th>
+                  <th style='width:5%;table-layout:fixed'>获奖名称</th>
+                  <th style='width:5%;table-layout:fixed'>获奖积分</th>
                   </tr>";
 
-            $sql = "SELECT `name`, `year`, `award_name`, `award_points`, `id` FROM `countworkload` order by `time` limit $offset,$Page_size";
+            $sql = "SELECT `name`, `year`, `award_name`, `award_points` FROM `countworkload` order by `time` limit $offset,$Page_size";
             foreach ($pdo->query($sql) as $row){
                  echo "<tr height='50px'>"; 
                  echo "<td>{$row['name']}</td>"; 
                  echo "<td>{$row['year']}</td>"; 
                  echo "<td>{$row['award_name']}</td>"; 
                  echo "<td>{$row['award_points']}</td>"; 
-                 echo "<td style='width:6%;table-layout:fixed'>
-                        <a href='add_info.php?id={$row['id']}'>新建</a>
-                        <a href='edit.php?id={$row['id']}'>修改</a>
-                        <a href='drop.php?id={$row['id']}'>删除</a>
-                       </td>";
                  echo "</tr>";
             }
             echo "</table>";
@@ -140,7 +148,8 @@
             
         echo "</div>";
 
-        echo '<div class="page" align="right"  style="font-size:14px">';
+        echo '<div class="page" align="right"  style="font-size:14px">'; 
+        //<font color='#FF0000'>*</font>
 
         $countpages = "共 " . $count . " 条记录；" . "共 " . $pages . " 页";
         echo $countpages,"&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -181,7 +190,7 @@
                 } 
                 echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;";
             echo '</div>'; 
-            echo "<br>";
+             echo "<br>";
 
      ?>
 <div class="page" width="100%">
@@ -189,29 +198,39 @@
         <div class="panel panel-success" width="100%">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    获奖工作量统计及积分计算
+                    查询信息栏
                 </h3>
             </div>
             <div class="panel-body">
-            <div style='color:#00F'>
-                <h3>注：本统计只计算排名为第一的获奖人员，其他人员由团队协调划转</h3>
-            </div>
-            <div>
-                <h3>获奖工作量统计及计算</h3>
-            </div>
-            <label>年度</label>
-            <select style='width:10%;height:25%;' class='form-control' name='year' type='text' id='year'>
-                <option value='2018' selected='selected'>2018</option>
-                <option value='2017'>2017</option>
-                <option value='2016'>2016</option>
-                <option value='2015'>2015</option>
-                <option value='2014'>2014</option>
-            </select>
-            &nbsp; &nbsp;&nbsp; &nbsp;
-            <input type='button' class='btn btn-default' onclick='workloadCount()' value='获奖工作量统计'/>&nbsp; &nbsp;&nbsp; &nbsp;
-            <input type='button' class='btn btn-default' onclick='searchData()' value='上年度数据归档'/>&nbsp; &nbsp;&nbsp; &nbsp;
-            <input type='button' class='btn btn-default' id='download' value='数据导出'/>&nbsp; &nbsp;&nbsp;&nbsp;
-            <input type='button' class='btn btn-default' onclick='previouspage()' value='返回'/>&nbsp; &nbsp;&nbsp; &nbsp;
+                <input type='checkbox' name='a'/>
+                <label>姓名</label><font color='#FF0000'>*</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" id='name' class="form-control" style="width:10%;height:25%;" name='name'/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type='checkbox' name='b'/>
+                <label>年度</label>
+                <input type="text" id='year' class="form-control" style="width:10%;height:25%;" name='year'/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <br><br>
+                <input type='checkbox' name='c'>
+                <label>科研积分</label>
+                <input type="text" id='award_points1' class="form-control" style="width:5%;height:25%;" name='award_points1'/>
+                &nbsp;&nbsp;
+                <select style='width:5%;height:25%;' class='form-control' name='op' type='text' id='op'>
+                    <option value='以上'>以上</option>
+                    <option value='以下'>以下</option>
+                    <option value='至' selected='selected'>至</option>
+                </select>
+                &nbsp;&nbsp;
+                <input type="text" id='award_points2' class="form-control" style="width:5%;height:25%;" name='award_points2'/>
+                <br><br>
+                <input type='button' class='btn btn-default' onclick='searchData()' value='未归档查询'/>
+                &nbsp; &nbsp;&nbsp; &nbsp;
+                <input type='button' class='btn btn-default' onclick='searchData()' value='归档查询'/>
+                &nbsp; &nbsp;&nbsp; &nbsp;
+                <input type='button' class='btn btn-default' id='download' value='数据导出'/>
+                &nbsp; &nbsp;&nbsp;&nbsp;
+                <input type='button' class='btn btn-default' onclick='previouspage()' value='返回'/>
+                &nbsp; &nbsp;&nbsp; &nbsp;
 
             </div>
         </div>
@@ -223,4 +242,3 @@
 
 </body>
 </html>
-
