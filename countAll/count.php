@@ -75,13 +75,24 @@
 
     <script>
         workloadCount = function(){
-
-        }
-
-        searchData = function(){     //查询数据
             var year = $("#year").val(); 
             var year = $.trim(year);
-            $.get('datasorce.php',{
+            if(year){
+                var data = "你确定要统计" + year + "年度获奖工作量吗？";
+                alert(data);
+                $.get('countsorce.php',{
+                    year: year,
+                    page: 1
+                },function(data) {
+                    $("#accort").html(data);
+                }) 
+            }
+        }
+
+        searchData = function(){     //上年度数据归档
+            var year = $("#year").val(); 
+            var year = $.trim(year);
+            $.get('countsorce.php',{
                 year: year,
                 page: 1
             },function(data) {
