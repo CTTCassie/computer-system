@@ -76,7 +76,7 @@
               echo"<script type="."\""."text/javascript"."\"".">"."window.location="."\""."/teacherinfo/prizeinfo.php"."\""."</script>";
             }
             else if($individual == "学生"){
-              echo"<script type="."\""."text/javascript"."\"".">"."window.location="."\""."/studentinfo/graduate/graduateprize.php"."\""."</script>";
+              echo"<script type="."\""."text/javascript"."\"".">"."window.location="."\""."/studentinfo/student.php"."\""."</script>";
             }
             else{    //管理员
               echo"<script type="."\""."text/javascript"."\"".">"."window.location="."\""."/top_page.php"."\""."</script>";
