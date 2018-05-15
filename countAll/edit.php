@@ -5,6 +5,15 @@
         include_once "../common/strap.php";
     ?> 
     <title>修改报告</title>
+    <style type='text/css'>
+        div{
+            width: 100%;
+            height: 750px;
+            background: -webkit-linear-gradient(
+                top,white,lightblue,skyblue
+            );
+        }
+    </style>
     <script>
 
     </script>
@@ -54,7 +63,7 @@
                     </tr>
                     <tr>
                         <td>&nbsp;</td>
-                        <td><input type="submit" value="增加"/>&nbsp;&nbsp;
+                        <td><input type="submit" value="修改"/>&nbsp;&nbsp;
                             <input type="reset" value="重置"/>
                         </td>
                     </tr>

@@ -5,39 +5,41 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />  
         <link rel="stylesheet" type="text/css" href="../assets/bootstrap.min.css" />  
         <title>计算机学院信息化管理系统注册</title>  
-        <style type="text/css"></style>  
+        <style type='text/css'>
+          div{
+              width: 100%;
+              height: 750px;
+              background: -webkit-linear-gradient(
+                top,white,lightblue,skyblue
+              );
+          }
+        </style> 
 
     </head>
     <body>
     <?php
     session_start();
-    include_once "/common/top_bottom.php";
+    //include_once "/common/top_bottom.php";
     //error_reporting(0);
     ?>
     <br><br><br>
+<center>
     <div class="page" width="100%">
         <form id="iterInfo" name="iterInfo" method="post" action="register.php" class="form-inline" role="form">
-            <div class="panel panel-primary" width="100%">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        请使用学号或工号注册（本系统已经做了加密处理，不会泄露个人信息）
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="text"  id='username' class="form-control" name="username" placeholder="请输入学号或者工号"/><br /><br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="password" id='password' class="form-control" name="password" placeholder="请输入密码"/><br /><br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码确认：
-                    <input type="password" id='password2' class="form-control" name="password2"  placeholder="请确认密码"/><br /><br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" id='reg' width="80px" height="100px" value="注册" class='btn btn-info' name="reg">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="index.php">返回登录页面</a>
-                </div>
-            </div>
+            <font color="blue"><h3>请使用学号或工号注册（本系统已经做了加密处理，不会泄露个人信息）</h3></font>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text"  id='username' class="form-control" name="username" placeholder="请输入学号或者工号"/><br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="password" id='password' class="form-control" name="password" placeholder="请输入密码"/><br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码确认：
+            <input type="password" id='password2' class="form-control" name="password2"  placeholder="请确认密码"/><br /><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="submit" id='reg' width="80px" height="100px" value="注册" class='btn btn-info' name="reg">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="index.php">返回登录页面</a>
         </form>
     </div>
+</center>
     <script type="text/javascript" src="/assets/jquery.min.js"></script>  
     <script type="text/javascript" src="/assets/bootstrap.min.js"></script>
     </body> 

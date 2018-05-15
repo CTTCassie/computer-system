@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="/assets/bootstrap.min.css" />  
         <title>用户信息展示</title>  
         <style type="text/css"></style>  
+        
         <?php
         session_start();
         include_once "/common/strap.php";

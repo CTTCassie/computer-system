@@ -5,6 +5,15 @@
         include_once "common/strap.php";
     ?> 
     <title>修改用户信息表</title>
+    <style type='text/css'>
+        div{
+            width: 100%;
+            height: 750px;
+            background: -webkit-linear-gradient(
+                top,white,lightblue,skyblue
+            );
+        }
+    </style>
     <script>
 
     </script>

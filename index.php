@@ -5,41 +5,42 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />  
         <link rel="stylesheet" type="text/css" href="../assets/bootstrap.min.css" />  
         <title>计算机学院信息化管理系统</title>  
-        <style type="text/css"></style>  
+        <style type='text/css'>
+          div{
+              width: 100%;
+              height: 750px;
+              background: -webkit-linear-gradient(
+                top,white,lightblue,skyblue
+              );
+          }
+        </style>
 
     </head>
     <body>
     <?php
     session_start();
-    include_once "/common/top_bottom.php";
+    //include_once "/common/top_bottom.php";
     //error_reporting(0);
     ?>
     <br><br><br>
+  <center>
     <div class="page" width="100%">
         <form id="iterInfo" name="iterInfo" method="post" action="index.php" class="form-inline" role="form">
-            <div class="panel panel-primary" width="100%">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        用户登录/LOGIN
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账号：
-                    <input type="text"  id='username' class="form-control" name="username" placeholder="请输入学号或者工号"/><br /><br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：
-                    <input type="password" id='password' class="form-control" name="password" placeholder="请输入密码"/><br /><br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label><input name="individual" type="radio" value="学生" />学生</label> 
-                    <label><input name="individual" type="radio" value="教师" checked="true"/>教师</label> 
-                    <label><input name="individual" type="radio" value="管理员" />管理员</label> <br /><br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="submit" id='log' width="80px" height="100px" value="登录" class='btn btn-info' name="log">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="register.php">没有账号，请先注册</a>
-                </div>
-            </div>
+          <font color="blue"><h3>用户登录/LOGIN</h3></font>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;账号：
+          <input type="text"  id='username' class="form-control" name="username" placeholder="请输入学号或者工号"/><br /><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：
+          <input type="password" id='password' class="form-control" name="password" placeholder="请输入密码"/><br /><br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <label><input name="individual" type="radio" value="学生" />学生</label>
+          <label><input name="individual" type="radio" value="教师" checked="true"/>教师</label>
+          <label><input name="individual" type="radio" value="管理员" />管理员</label> <br /><br />
+          <input type="submit" id='log' width="80px" height="100px" value="登录" class='btn btn-info' name="log">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="register.php">没有账号，请先注册</a>
         </form>
     </div>
+  </center>
     <script type="text/javascript" src="/assets/jquery.min.js"></script>  
     <script type="text/javascript" src="/assets/bootstrap.min.js"></script>
     </body> 

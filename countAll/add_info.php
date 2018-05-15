@@ -4,7 +4,15 @@
       <?php
         include_once "../common/strap.php";
     ?> 
-
+    <style type='text/css'>
+        div{
+            width: 100%;
+            height: 750px;
+            background: -webkit-linear-gradient(
+                top,white,lightblue,skyblue
+            );
+        }
+    </style>
     <title>新建报告-</title>
      <script>
 
@@ -17,7 +25,6 @@
      <br>
     <?php
     include_once "../common/conn.php";
-    include_once "../common/top_bottom.php";
 
     $sql = "SELECT * FROM `countworkload` WHERE `id`='{$_GET['id']}'";
     $id = $_GET['id'];

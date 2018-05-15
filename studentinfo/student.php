@@ -39,11 +39,11 @@
 
 </head>
 <body>
-<div align='center'>
+<center>
     <?php
         echo "<br><br><br><br><br><br><br><br><br><br><br><br>";
 
-        echo "<label><h3>获奖信息管理平台之学生登录主页面</h3></label>";
+        echo "<label><h3>获奖信息管理平台之学生登录页面</h3></label>";
         echo "<br><br>";
         echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
         $graduate = "window.location.href='/studentinfo/graduate/graduateprize.php'";
@@ -53,6 +53,6 @@
         echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
         echo "<input type='button' class='btn btn-success' style='width:400px;height:35px;' onclick=$graduate value='本科生各种获奖信息'/>";
     ?>
-</div>
+</center>
 </body>
 </html>
