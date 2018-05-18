@@ -69,9 +69,12 @@
                 echo "&nbsp;&nbsp;";
                 $queryrecord = "window.location.href='searchRecord.php'";
                 $uploading = "window.location.href='upload.php'";
+                $student = "window.location.href='/studentinfo/student.php'";
                 echo "<input type='button' onclick=$queryrecord value='记录查询' />";
                 echo "&nbsp;&nbsp;";
                 echo "<input type='button' onclick=$uploading value='上传获奖附件' />";
+                echo "&nbsp;&nbsp;";
+                echo "<input type='button' onclick=$student value='查看学生获奖信息' />";
             ?>
         </div>
     </table>

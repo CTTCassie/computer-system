@@ -36,12 +36,11 @@
         <span class='label label-success' name="username" id="username">当前用户：<?php echo $username; ?></span> 
       </div>   
       <br><br>
-      <table width="100%" cellspacing="0"  cellpadding="0" border="1" style="width:100%;table-layout:fixed">
+      <table width="50%" cellspacing="0"  cellpadding="0" border="1" style="width:50%;table-layout:fixed">
         <tr height="40px" bgcolor="#0099FF">
             <th style='width:200px;'>账户</th>
             <th style='width:200px;'>密码</th>
             <th style='width:200px;'>操作</th>
-            <th></th>
         </tr>
         <?php
            $sql = "SELECT `uid`, `username`, `password` FROM `userinfo` WHERE 1";
@@ -53,7 +52,6 @@
                     <a href='edit.php?uid={$row['uid']}'>修改</a>
                     <a href='drop.php?uid={$row['uid']}'>删除</a>
                   </td>";
-            echo "<td></td>";
             echo "</tr>";
            }
         ?>
