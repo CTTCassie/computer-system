@@ -18,7 +18,11 @@
 
     </script>
 </head>
-<body bgcolor='#FF0000'>
+<body>
+    <a href="/index.php">
+    <img border="0" src="/image/xatu.jpg" alt="获奖信息管理系统" style="width:1350px;height:160px;"></a>
+
+    <marquee behavior="alternate"><h4>欢迎来到西安工业大学获奖信息管理系统</h4></marquee>
 <center>
      <br><br><br>
      <h4>修改获奖工作量统计报告</h4>
@@ -69,6 +73,8 @@
                     </tr>
                 </table>
             </form>
+            <br><br><br>
+        <label><a href="/">Copyright©西安工业大学</a></label>
     <?php
         }
     ?>

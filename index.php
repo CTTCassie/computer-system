@@ -5,6 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />  
         <link rel="stylesheet" type="text/css" href="../assets/bootstrap.min.css" />  
         <title>计算机学院信息化管理系统</title>  
+
+        <a href="/index.php">
+        <img border="0" src="/image/xatu.jpg" alt="获奖信息管理系统" style="width:1350px;height:160px;"></a>
+
+        <marquee behavior="alternate"><h4>欢迎来到西安工业大学获奖信息管理系统</h4></marquee>
         <style type='text/css'>
           div{
               width: 100%;
@@ -22,7 +27,8 @@
     //include_once "/common/top_bottom.php";
     //error_reporting(0);
     ?>
-    <br><br><br>
+    <br><br>
+
   <center>
     <div class="page" width="100%">
         <form id="iterInfo" name="iterInfo" method="post" action="index.php" class="form-inline" role="form">
@@ -39,6 +45,8 @@
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a href="register.php">没有账号，请先注册</a>
         </form>
+        <br><br><br><br>
+        <label><a href="/">Copyright©西安工业大学</a></label>
     </div>
   </center>
     <script type="text/javascript" src="/assets/jquery.min.js"></script>  
