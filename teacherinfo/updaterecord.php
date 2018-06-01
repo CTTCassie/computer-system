@@ -58,7 +58,7 @@ if (isset($_POST['query'])) {
             $data['rows'][$k]['teach_class'] = $v['teach_class'];
             $data['rows'][$k]['teach_time'] = $v['teach_time'];
             $data['rows'][$k]['teach_rank'] = $v['teach_rank'];
-           $data['rows'][$k]['other_name'] = $v['other_name'];
+            $data['rows'][$k]['other_name'] = $v['other_name'];
             $data['rows'][$k]['other_class'] = $v['other_class'];
             $data['rows'][$k]['other_time'] = $v['other_time'];
             $data['rows'][$k]['other_rank'] = $v['other_rank'];
@@ -75,11 +75,12 @@ if (isset($_POST['query'])) {
     }
 }
 if (isset($_POST['flag'])) {
+    $pigeonhole = 0;   //默认未归档
     try {
         //插入获得的教师获奖信息
         $sql = "";
         if ($_POST['flag'] == "insert") {
-            $sql = "INSERT INTO `teacherinfo`(`name`, `year`, `science_name`, `science_class`, `science_time`, `science_rank`, `teach_name`, `teach_class`, `teach_time`, `teach_rank`, `other_name`, `other_class`, `other_time`, `other_rank`, `famous_name`, `famous_class`, `famous_time`, `time`) VALUES ('{$_POST['name']}','{$_POST['year']}','{$_POST['science_name']}','{$_POST['science_class']}','{$_POST['science_time']}',{$_POST['science_rank']},'{$_POST['teach_name']}','{$_POST['teach_class']}','{$_POST['teach_time']}',{$_POST['teach_rank']},'{$_POST['other_name']}','{$_POST['other_class']}','{$_POST['other_time']}',{$_POST['other_rank']},'{$_POST['famous_name']}','{$_POST['famous_class']}','{$_POST['famous_time']}','{$_POST['time']}')";
+            $sql = "INSERT INTO `teacherinfo`(`name`, `year`, `pigeonhole`, `science_name`, `science_class`, `science_time`, `science_rank`, `teach_name`, `teach_class`, `teach_time`, `teach_rank`, `other_name`, `other_class`, `other_time`, `other_rank`, `famous_name`, `famous_class`, `famous_time`, `time`) VALUES ('{$_POST['name']}','{$_POST['year']}','{$pigeonhole}','{$_POST['science_name']}','{$_POST['science_class']}','{$_POST['science_time']}',{$_POST['science_rank']},'{$_POST['teach_name']}','{$_POST['teach_class']}','{$_POST['teach_time']}',{$_POST['teach_rank']},'{$_POST['other_name']}','{$_POST['other_class']}','{$_POST['other_time']}',{$_POST['other_rank']},'{$_POST['famous_name']}','{$_POST['famous_class']}','{$_POST['famous_time']}','{$_POST['time']}')";
         } else {    //更新数据
             //`name`, `year`, `science_name`, `science_class`, `science_time`, `science_rank`, `teach_name`, `teach_class`, `teach_time`, `teach_rank`, `other_name`, `other_class`, `other_time`, `other_rank`, `famous_name`, `famous_class`, `famous_time`, `time`
             $sql = "UPDATE `teacherinfo` SET `name`='{$_POST['name']}',`year`='{$_POST['year']}',`science_name`='{$_POST['science_name']}',`science_class`='{$_POST['science_class']}',`science_time`='{$_POST['science_time']}',`teach_name`='{$_POST['teach_name']}',`teach_class`='{$_POST['teach_class']}',`teach_time`='{$_POST['teach_time']}',`teach_rank`='{$_POST['teach_rank']}',`other_name`='{$_POST['other_name']}', `other_class`='{$_POST['other_class']}',`other_time`='{$_POST['other_time']}',`other_rank`='{$_POST['other_rank']}',`famous_name`='{$_POST['famous_name']}',`famous_class`='{$_POST['famous_class']}',`famous_time`='{$_POST['famous_time']}' WHERE `time`='{$_POST['time']}'";
@@ -92,6 +93,7 @@ if (isset($_POST['flag'])) {
         echo $sql_inser;
     }
 }
+
 if(isset($_POST['del'])){
     try{
         //要删除的字段必须和用户输入完全一致
@@ -104,4 +106,27 @@ if(isset($_POST['del'])){
     }
 }
 
+if(isset($_POST['pipe'])){   //归档
+    $pigeonhole = 1;
+    try{
+        $sql = "UPDATE `teacherinfo` SET `pigeonhole`='{$pigeonhole}' WHERE `name`='{$_POST['name']}' and `time`='{$_POST['time']}' ";
+        $st = $pdo->exec($sql);
+        echo true;
+    }
+    catch(PDOException $ex){
+        echo $ex;
+    }
+}
+
+if(isset($_POST['check'])){  //审核
+    $pigeonhole = 1;
+    try{
+        $sql = "SELECT * FROM `teacherinfo` WHERE `pigeonhole`='{$pigeonhole}' and `name`='{$_POST['name']}' and `time`='{$_POST['time']}' ";
+        $st = $pdo->exec($sql);
+        echo true;
+    }
+    catch(PDOException $ex){
+        echo $ex;
+    }
+}
 ?>

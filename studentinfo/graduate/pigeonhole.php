@@ -8,7 +8,7 @@
                 $date2 = $_GET['date2'];
                 $awark_class = $_GET['awark_class'];
                 $licenceauth = $_GET['licenceauth'];
-                $pigeonhole = 0;   //未归档查询
+                $pigeonhole = 1;   //归档查询
 
                 echo "<table width='100%' cellspacing='0'  cellpadding='0' border='1' style='width:100%;table-layout:fixed'>";
 

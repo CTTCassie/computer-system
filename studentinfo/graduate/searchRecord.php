@@ -105,6 +105,38 @@
             } 
 
         }
+
+        pigeonhole = function(){   //归档查询
+            var name = $("#name").val(); 
+            var name = $.trim(name);
+            var year = $("#year").val(); 
+            var year = $.trim(year);
+            var date1 = $("#date1").val();
+            var date1 = $.trim(date1);
+            var date2 = $("#date2").val();
+            var date2 = $.trim(date2);
+            var awark_class = $("#awark_class").val();
+            var awark_class = $.trim(awark_class);
+            var licenceauth = $("#licenceauth").val();
+            var licenceauth = $.trim(licenceauth);
+
+            if(name){
+                $.get('pigeonhole.php',{
+                    name: name,
+                    year: year,
+                    date1: date1,
+                    date2: date2,
+                    awark_class: awark_class,
+                    licenceauth: licenceauth,
+                    page: 1
+                },function(data) {
+                    $("#accort").html(data);
+                })   
+            }
+            else{
+                alert("学生姓名不可为空");
+            } 
+        }
         previouspage = function(){   //返回上一页
             window.history.back(); 
         }
@@ -153,7 +185,7 @@
                 <input type="text" id='licenceauth' class="form-control" style="width:18%;height:25%;" name='licenceauth'/>
                 <br><br>
                 <input type='button' class='btn btn-default' onclick='searchData()' value='未归档查询'/>&nbsp; &nbsp;&nbsp; &nbsp;
-                <input type='button' class='btn btn-default' onclick='searchData()' value='归档数据'/>&nbsp; &nbsp;&nbsp; &nbsp;
+                <input type='button' class='btn btn-default' onclick='pigeonhole()' value='归档数据'/>&nbsp; &nbsp;&nbsp; &nbsp;
                 <input type='button' class='btn btn-default' id='download' value='数据导出'/>&nbsp; &nbsp;&nbsp; &nbsp;
                 <input type='button' class='btn btn-default' onclick='previouspage()' value='返回'/>&nbsp; &nbsp;&nbsp; &nbsp;
 

@@ -73,7 +73,7 @@
     </script>
 
     <script>
-        searchData = function(){     //查询数据
+        searchData = function(){     //未归档查询数据
             var name = $("#teacher_name").val();    //获得教师名
             var name = $.trim(name);
 
@@ -128,6 +128,61 @@
                 alert("教师姓名不可为空");
             } 
 
+        }
+        pigeonhole = function(){    //归档查询数据
+            var name = $("#teacher_name").val();    //获得教师名
+            var name = $.trim(name);
+
+            var science_class = $("#science_class").val();   //获得科研获奖类别
+            var science_class = $.trim(science_class);
+            var date1 = $("#date1").val();
+            var date1 = $.trim(date1);
+            var date2 = $("#date2").val();
+            var date2 = $.trim(date2);
+
+            var teach_class = $("#teach_class").val();   //获得科研获奖类别
+            var teach_class = $.trim(teach_class);
+            var date3 = $("#date3").val();
+            var date3 = $.trim(date3);
+            var date4 = $("#date4").val();
+            var date4 = $.trim(date4);
+
+            var other_class = $("#other_class").val();   //获得科研获奖类别
+            var other_class = $.trim(other_class);
+            var date5 = $("#date5").val();
+            var date5 = $.trim(date5);
+            var date6 = $("#date6").val();
+            var date6 = $.trim(date6);
+
+            var famous_class = $("#famous_class").val();   //获得科研获奖类别
+            var famous_class = $.trim(famous_class);
+            var date7 = $("#date7").val();
+            var date7 = $.trim(date7);
+            var date8 = $("#date8").val();
+            var date8 = $.trim(date8);
+            if(name){
+                $.get('pigeonhole.php',{
+                    name:name,
+                    science_class:science_class,
+                    date1:date1,
+                    date2:date2,
+                    teach_class:teach_class,
+                    date3:date3,
+                    date4:date4,
+                    other_class:other_class,
+                    date5:date5,
+                    date6:date6,
+                    famous_class:famous_class,
+                    date7:date7,
+                    date8:date8,
+                    page:1
+                },function(data) {
+                    $("#accort").html(data);
+                })   
+            }
+            else{
+                alert("教师姓名不可为空");
+            } 
         }
         previouspage = function(){   //返回上一页
             window.history.back(); 
@@ -304,7 +359,7 @@
                 <input id='date8' class="form-control" name='date8' type="date" width="50px"/>
                 <br><br>
                 <input type='button' class='btn btn-default' onclick='searchData()' value='未归档查询'/>&nbsp; &nbsp;&nbsp; &nbsp;
-                <input type='button' class='btn btn-default' onclick='searchData()' value='归档查询'/>&nbsp; &nbsp;&nbsp; &nbsp;
+                <input type='button' class='btn btn-default' onclick='pigeonhole()' value='归档查询'/>&nbsp; &nbsp;&nbsp; &nbsp;
                 <input type='button' class='btn btn-default' id='download' value='数据导出'/>&nbsp; &nbsp;&nbsp; &nbsp;
                 <input type='button' class='btn btn-default' onclick='previouspage()' value='返回'/>&nbsp; &nbsp;&nbsp; &nbsp;
 

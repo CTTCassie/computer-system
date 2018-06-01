@@ -11,7 +11,7 @@
         <style type='text/css'>
           div{
               width: 100%;
-              height: 750px;
+              height: 470px;
               background: -webkit-linear-gradient(
                 top,white,lightblue,skyblue
               );

@@ -209,7 +209,26 @@
                         }
                     }
                 }, '-', {
-                        text: '保存',iconCls: 'icon-save',handler: function(){
+                    text: '修改',iconCls: 'icon-edit',handler: function() {
+                        var rows = datagrid.datagrid("getSelections"); 
+                        if(rows.length == 1){   //如果只选择了一行则可以修改
+
+                            if (editRow != undefined) { 
+                                datagrid.datagrid("endEdit", editRow); 
+                            } 
+                            if (editRow == undefined) {
+                                var index = datagrid.datagrid("getRowIndex", rows[0]);
+                                datagrid.datagrid("beginEdit", index);
+                                editRow = index;
+                                datagrid.datagrid("unselectAll");
+                            }
+                        }
+                        else{
+                            alert("您尚未选择要编辑的记录");
+                        }
+                    }
+                }, '-', {
+                        text: '保存',iconCls: 'icon-save',handler: function() {
                         if(isEndEdit()){   //判断是否结束编辑
                             var check = true;
                             var arr;
@@ -271,7 +290,7 @@
 
                     }
                 }, '-', {
-                    text: '取消',iconCls: 'icon-undo',handler: function(){
+                    text: '取消编辑',iconCls: 'icon-no',handler: function() {
                         $('#dd').datagrid('rejectChanges');
                         editRow = undefined;
                     }
@@ -314,9 +333,92 @@
                         editRow = undefined;    //当删除结束之后清空当前编辑行
                     }
 
+                }, '-', {
+                    text: '归档',iconCls: 'icon-back',handler: function() {
+                        var row = $('#dd').datagrid("getSelections");
+                        if(row.length <= 0){
+                            alert("您尚未选择要归档的记录");
+                        }
+                        else{
+                            var arr = {
+                                "pipe": "true", 
+                                "name": row[0].name,
+                                "time": row[0].time
+                            };
+
+                            $.ajax({
+                                url: "updatepostgraduate.php",    //请求的url地址  
+                                dataType: "json",   //返回格式为json
+                                async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+                                data: arr,    //参数值
+                                type: "post",   //请求方式 get 或者post
+                                beforeSend: function () {
+                                    //请求前的处理  
+                                },
+                                success: function (req) {
+                                    $("#dd").datagrid('reload');
+                                },
+                                complete: function () {
+                                    //请求完成的处理  
+                                    alert("归档成功");
+                                    $("#dd").datagrid('reload');
+                                },
+                                error: function (req) {
+                                    //请求出错处理
+                                    $("#dd").datagrid('reload');
+                                }
+                            });
+
+                        }
+                        editRow = undefined;
+                    }
+                }, '-', {
+                    text: '审核',iconCls: 'icon-reload',handler: function() {
+                        var row = $('#dd').datagrid("getSelections");
+                        if(row.length <= 0){
+                            alert("您尚未选择要审核的记录");
+                        }
+                        else{
+                            var arr = {
+                                "check": "true", 
+                                "name": row[0].name,
+                                "time": row[0].time
+                            };
+
+                            $.ajax({
+                                url: "updatepostgraduate.php",    //请求的url地址  
+                                dataType: "json",   //返回格式为json
+                                async: true,//请求是否异步，默认为异步，这也是ajax重要特性
+                                data: arr,    //参数值
+                                type: "post",   //请求方式 get 或者post
+                                beforeSend: function () {
+                                    alert("真的要对选中的记录进行审核吗？");
+                                    //请求前的处理  
+                                },
+                                success: function (req) {
+                                    $("#dd").datagrid('reload');
+                                },
+                                complete: function () {
+                                    //请求完成的处理  
+                                    alert("审核成功");
+                                    $("#dd").datagrid('reload');
+                                },
+                                error: function (req) {
+                                    //请求出错处理
+                                    $("#dd").datagrid('reload');
+                                }
+                            });
+
+                        }
+                        editRow = undefined;
+                    }
+                }, '-', {
+                    text: '返回',iconCls: 'icon-redo',handler: function() {
+                        window.history.back(); 
+                    }
                 }, '-'],
-            onClickRow: function (rowIndex, rowData) {
-                //单击开启编辑行
+            onDblClickRow: function (rowIndex, rowData) {
+                //双击开启编辑行
                 if (editRow != undefined) {
                     datagrid.datagrid("endEdit", editRow);
                 }

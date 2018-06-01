@@ -15,7 +15,7 @@
                 $famous_class = $_GET['famous_class'];
                 $date7 = $_GET['date7'];
                 $date8 = $_GET['date8'];
-                $pigeonhole = 0;   //未归档查询
+                $pigeonhole = 1;   //归档查询
 
                 echo "<table width='100%' cellspacing='0'  cellpadding='0' border='1' style='width:100%;table-layout:fixed'>";
 
